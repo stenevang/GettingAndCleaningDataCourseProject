@@ -52,7 +52,7 @@ At this point, the remaining number of measure columns are 66 out of the origina
 This is regarding point 5 in the assignment instructions, where the large number of rows (10,299) will be reduced by calculating the average value for each measure column, grouped by subject and activity. This is done using the dplyr package, making use of piped syntax.
 
 ### SECTION 7
-Finally, the data sets created, "traintest" and "traintest_avg", are writted to disk as csv files in the local Github repository to be included in the commit and push to Github.
+Finally, the data sets created, "traintest" and "traintest_avg", are writted to disk as txt files in the local Github repository to be included in the commit and push to Github.
 
 
 

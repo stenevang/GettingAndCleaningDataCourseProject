@@ -73,8 +73,8 @@ traintest_avg <- traintest %>% group_by(subject, activitycode, activity) %>% sum
 # changin working directory to local hit repo directory
 setwd("C:/Users/theod/Documents/Git/DataScienceSpecialization/03_Getting_and_Cleaning_Data/GettingAndCleaningDataCourseProject")
 
-write.csv(traintest, file="traintest.csv", quote=F, row.names=F)
-write.csv(traintest_avg, file="traintest_avg.csv", quote=F, row.names=F)
+write.table(traintest, file="traintest.txt", quote=F, row.names=F)
+write.table(traintest_avg, file="traintest_avg.txt", quote=F, row.names=F)
 
 rm(traintest)
 rm(traintest_avg)
