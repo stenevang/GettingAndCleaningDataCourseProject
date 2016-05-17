@@ -1,67 +1,134 @@
 
-# Final assignment in "Getting and Cleaning Data" on Coursera, May 2016
-Submitted by Theodor Stenevang Klemming
+# Code Book
+## Final Assignment, Getting and Cleaning Data
+Submitted by: Theodor Stenevang Klemming
 
-## Background and instructions followed
-This assignment uses data available from this URL (the "assignment data")
+## Data files in this repo
+This repo contains my submission of the final assignment in the Coursera course Getting and Cleaning Data.
+There are 4 data files in the repository:
+
+1. traintest.txt
+2. traintext_avg.txt
+3. traintest_column_names.txt
+4. traintest_avg_column_names.txt
+
+All of these files were produced from files available in this zip file, by following the assignment instructions:
 https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
-The data was produced in a research project presented here:
-http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
-
-## Description of the assignment
-The assignment instructions were to create an R-script that would
-
-1. Merge the training and the test sets from the assignment data to create one data set.
-2. Extract only the measurements on the mean and standard deviation for each measurement
-3. Use descriptive activity names to name the activities in the data set
-4. Appropriately label the data set with descriptive variable names.
-5. From the data set in step 4, create a second, independent tidy data set with the average of each variable for each activity and each subject.
-
-All of the above is achieved by the submitted script in the file run_analysis.R
+The zip file linked above contains descriptive info files that explain the content of the data files:
+activity_labels.txt
+features.txt
+features_info.txt
+README.txt
 
 
-## Description of R code in run_analysis.R
+### traintest.txt
+This file contains data from 
+./train/subject_train.txt
+./train/X_train.txt
+./train/y_train.txt
+./test/subject_test.txt
+./test/X_test.txt
+./test/y_test.txt
 
-### SECTION 1
-The packages tidyr and dplyr are loaded.
-The working directory is set to the location of the assignment data after unzipping the zip-file to disk
+After reducing the the number of measure columns in accordance with the assignment instructions, the file contains the following columns:
 
-### SECTION 2
-A character vector called col_nms is created, containing the 561 names of features collected by gyro sensors in the research project.
-A data frame called actlables is created, containing 6 different activity codes with the corresponding activity names.
+####DIMENSIONS: 3
+activitycode: integer 1:6, indicating type of activity
+activity: character, describing activity, 6 different values
+subject: integer 1:30, specifying 30 different persons used in the experiment to collect data from a smart phone
 
-### SECTION 3
-A function that loads data, getthedata, is defined and called for the training data, and for the test data.
-The function starts by loading the data, which is fixed column width, into a single-column data frame.
-Trailing and leading white space is trimmed, and double space is changed into single space. Following that, the separate function from tidyr can be used to split up the single column into 561 columns, on for each feature (each measure).
-A data frame containing activity codes is created, with a row count matching that of the main data.
-actlables data frame created in SECTION 2, containing the clear text activity names, is joined with the activity codes data frame.
-A data frame containing the subject code for each row is created.
-The main data, and the activity data and the subject data is put together using cbind (they have identical row counts)
-The resulting data frames "train" and "test" have identical column structure by different row count (approx 70% vs 30%), and are merged using rbind (similar to a UNION ALL operation in SQL)
-
-### SECTION 4
-The assignment, as described in point 2, is to keep only measure columns that contain a mean or a standard deviation value. The correct columns are indicated by the column titles originally fetched in SECTION 2 from the file features.txt in the assignment data, and described in a file named features_info.txt in the assignment data. 
-By putting all the column namnes of the "traintest" data frames in a vector, and checking that vector for values containing "mean()" OR "std()", the desired subset of columns is found and the index numbers of those columns are assigned to a vector "keepers", which is used for subsetting the "traintest" data frame.
-
-### SECTION 5
-At this point, the remaining number of measure columns are 66 out of the original 561. They are still all of data type character, and by iterating over all of the columns from and including column nr 4 to and including the last column, the data type is changed from character to numeric.
-
-### SECTION 6
-This is regarding point 5 in the assignment instructions, where the large number of rows (10,299) will be reduced by calculating the average value for each measure column, grouped by subject and activity. This is done using the dplyr package, making use of piped syntax.
-
-### SECTION 7
-Finally, the data sets created, "traintest" and "traintest_avg", are writted to disk as txt files in the local Github repository to be included in the commit and push to Github.
+####MEASURES: 66
+These measures are a selection of what in the original data is 561 measures (referred to as features).
+Here, the mean and standard deviation columns have been kept, which were estimated from the collected data by the researchers in the project. The unit if the measures is standard gravity units 'g'
 
 
+**This is how the features are descibed in the file features_info.txt:**
+
+*"The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
+
+Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag). 
+
+Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals). 
+
+These signals were used to estimate variables of the feature vector for each pattern:  
+'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions."*
+
+tBodyAcc-mean()-X
+tBodyAcc-mean()-Y
+tBodyAcc-mean()-Z
+tBodyAcc-std()-X
+tBodyAcc-std()-Y
+tBodyAcc-std()-Z
+tGravityAcc-mean()-X
+tGravityAcc-mean()-Y
+tGravityAcc-mean()-Z
+tGravityAcc-std()-X
+tGravityAcc-std()-Y
+tGravityAcc-std()-Z
+tBodyAccJerk-mean()-X
+tBodyAccJerk-mean()-Y
+tBodyAccJerk-mean()-Z
+tBodyAccJerk-std()-X
+tBodyAccJerk-std()-Y
+tBodyAccJerk-std()-Z
+tBodyGyro-mean()-X
+tBodyGyro-mean()-Y
+tBodyGyro-mean()-Z
+tBodyGyro-std()-X
+tBodyGyro-std()-Y
+tBodyGyro-std()-Z
+tBodyGyroJerk-mean()-X
+tBodyGyroJerk-mean()-Y
+tBodyGyroJerk-mean()-Z
+tBodyGyroJerk-std()-X
+tBodyGyroJerk-std()-Y
+tBodyGyroJerk-std()-Z
+tBodyAccMag-mean()
+tBodyAccMag-std()
+tGravityAccMag-mean()
+tGravityAccMag-std()
+tBodyAccJerkMag-mean()
+tBodyAccJerkMag-std()
+tBodyGyroMag-mean()
+tBodyGyroMag-std()
+tBodyGyroJerkMag-mean()
+tBodyGyroJerkMag-std()
+fBodyAcc-mean()-X
+fBodyAcc-mean()-Y
+fBodyAcc-mean()-Z
+fBodyAcc-std()-X
+fBodyAcc-std()-Y
+fBodyAcc-std()-Z
+fBodyAccJerk-mean()-X
+fBodyAccJerk-mean()-Y
+fBodyAccJerk-mean()-Z
+fBodyAccJerk-std()-X
+fBodyAccJerk-std()-Y
+fBodyAccJerk-std()-Z
+fBodyGyro-mean()-X
+fBodyGyro-mean()-Y
+fBodyGyro-mean()-Z
+fBodyGyro-std()-X
+fBodyGyro-std()-Y
+fBodyGyro-std()-Z
+fBodyAccMag-mean()
+fBodyAccMag-std()
+fBodyBodyAccJerkMag-mean()
+fBodyBodyAccJerkMag-std()
+fBodyBodyGyroMag-mean()
+fBodyBodyGyroMag-std()
+fBodyBodyGyroJerkMag-mean()
+fBodyBodyGyroJerkMag-std()
 
 
-## License information from the README.txt of the assignment zip file.
-Use of this dataset in publications must be acknowledged by referencing the following publication [1] 
+### traintest_avg.txt
+This file is an aggregation of traintest.txt, where each measure column has been aggregated and grouped by the dimensions activitycode, activity and subject (there is a one-to-one value relationship between activitycode and activity in the data). The aggregation method for each column is mean.The columns in this file is the exact same as in traintext.txt, with the different that there is only 1 row of data per combination of activity and subject, meaning 30x6 = 180 rows of data, where each row contains a mean value from the original full data set.
 
-[1] Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012
 
-This dataset is distributed AS-IS and no responsibility implied or explicit can be addressed to the authors or their institutions for its use or misuse. Any commercial use is prohibited.
+### traintest_column_names.txt
+This file documents the column titles as they are in the file traintest.txt, since the column titles will be distorted after loading the data back into R, due to dashes and bracktes getting replaced with dots.
 
-Jorge L. Reyes-Ortiz, Alessandro Ghio, Luca Oneto, Davide Anguita. November 2012.
+
+### traintest_avg_column_names.txt
+This file documents the column titles as they are in the file traintest_avg.txt, since the column titles will be distorted after loading the data back into R, due to dashes and bracktes getting replaced with dots.
