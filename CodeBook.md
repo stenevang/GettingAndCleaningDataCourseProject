@@ -24,12 +24,12 @@ The zip file linked above contains descriptive info files that explain the conte
 
 ### traintest.txt
 This file contains data from 
-./train/subject_train.txt
-./train/X_train.txt
-./train/y_train.txt
-./test/subject_test.txt
-./test/X_test.txt
-./test/y_test.txt
+-./train/subject_train.txt
+-./train/X_train.txt
+-./train/y_train.txt
+-./test/subject_test.txt
+-./test/X_test.txt
+-./test/y_test.txt
 
 After reducing the the number of measure columns in accordance with the assignment instructions, the file contains the following columns:
 
@@ -45,23 +45,23 @@ Here, the mean and standard deviation columns have been kept, which were estimat
 
 **This is how the features are descibed in the file features_info.txt:**
 
-*"The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
+*"The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz.* 
 
-Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag). 
+*Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag).* 
 
-Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals). 
+*Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals).* 
 
-These signals were used to estimate variables of the feature vector for each pattern:  
+*These signals were used to estimate variables of the feature vector for each pattern:  
 '-XYZ' is used to denote 3-axial signals in the X, Y and Z directions."*
 
-tBodyAcc-mean()-X
-tBodyAcc-mean()-Y
-tBodyAcc-mean()-Z
-tBodyAcc-std()-X
-tBodyAcc-std()-Y
-tBodyAcc-std()-Z
-tGravityAcc-mean()-X
-tGravityAcc-mean()-Y
+.tBodyAcc-mean()-X
+.tBodyAcc-mean()-Y
+.tBodyAcc-mean()-Z
+.tBodyAcc-std()-X
+.tBodyAcc-std()-Y
+.tBodyAcc-std()-Z
+.tGravityAcc-mean()-X
+.tGravityAcc-mean()-Y
 tGravityAcc-mean()-Z
 tGravityAcc-std()-X
 tGravityAcc-std()-Y
@@ -123,7 +123,7 @@ fBodyBodyGyroJerkMag-std()
 
 
 ### traintest_avg.txt
-This file is an aggregation of traintest.txt, where each measure column has been aggregated and grouped by the dimensions activitycode, activity and subject (there is a one-to-one value relationship between activitycode and activity in the data). The aggregation method for each column is mean.The columns in this file is the exact same as in traintext.txt, with the different that there is only 1 row of data per combination of activity and subject, meaning 30x6 = 180 rows of data, where each row contains a mean value from the original full data set.
+This file is an aggregation of traintest.txt, where each measure column has been aggregated and grouped by the dimensions activitycode, activity and subject (there is a one-to-one value relationship between activitycode and activity in the data). The aggregation method for each column is mean.The columns in this file are the exact same as in traintext.txt, with the different that there is only 1 row of data per combination of activity and subject, meaning 30x6 = 180 rows of data, where each row contains a mean value from the original full data set.
 
 
 ### traintest_column_names.txt
