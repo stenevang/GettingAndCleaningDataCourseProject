@@ -36,7 +36,7 @@ All of the above is achieved by the submitted script in the file run_analysis.R
 ## Description of R code in run_analysis.R
 
 #### SECTION 1
-The packages tidyr and dplyr are loaded.
+The packages data.table and dplyr are loaded.
 The current working directory is saved as previous_wd to be reset later
 The working directory is set to the location of the assignment data after unzipping the zip-file to disk
 
