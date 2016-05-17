@@ -45,8 +45,7 @@ A character vector called col_nms is created, containing the 561 names of featur
 
 #### SECTION 3
 A function that loads data, getthedata, is defined and called for the training data, and for the test data.
-The function starts by loading the data, which is fixed column width, into a single-column (character) data frame
-Trailing and leading white space is trimmed, and double space is changed into single space. Following that, the separate-function from tidyr can be used to split up the single column into 561 columns, on for each feature (each measure).
+The function starts by loading the data, using the fread() function from the data.table package.
 A data frame containing activity codes is created, with a row count matching that of the main data.
 A data frame containing the subject code for each row is created, also with a row count matching that of the main data.
 The main data, and the activity data and the subject data are put together using cbind (they have identical row counts).
