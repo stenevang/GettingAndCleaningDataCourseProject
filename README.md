@@ -60,12 +60,9 @@ The assignment, as described in point 2, is to keep only measure columns that co
 By putting all the column namnes of the "traintest" data frames in a vector, and checking that vector for values containing "mean()" OR "std()" using a regular expression, the desired subset of columns is found and the index numbers of those columns are assigned to a vector "keepers", which is used for subsetting the "traintest" data frame.
 
 #### SECTION 6
-At this point, the remaining number of measure columns are 66 out of the original 561. They are still all of data type character, and by iterating over all of the columns from and including column nr 4 to and including the last column, the data type is changed from character to numeric.
-
-#### SECTION 7
 This is regarding point 5 in the assignment instructions, where the large number of rows (10299) will be reduced by calculating the average value for each measure column, grouped by subject and activity. This is done using the dplyr package, making use of piped syntax.
 
-#### SECTION 8
+#### SECTION 7
 The column names of traintest and traintest_avg as saved in two different character vectors and saved in two text files, so they can be used later after loading the data sets into R, after R has caused the dashes and brackets in the column names of the main data files to be replaced by dots.
 The data sets created, "traintest" and "traintest_avg", are also writted to disk as txt files in the local Github repository to be included in the commit and push to Github.
 

@@ -59,19 +59,10 @@ rm(keepers)
 
 # SECTION 6
 
-# converting from char to numeric
-for (i in 4:ncol(traintest)) {
-        traintest[,i] <- as.numeric(traintest[,i])
-}
-
-rm(i)
-
-# SECTION 7
-
 # calculating the average (mean) for each measure grouped by subject and activity using dplyr
 traintest_avg <- traintest %>% group_by(activitycode, activity, subject) %>% summarize_each(funs(mean))
 
-# SECTION 8
+# SECTION 7
 
 # changing working directory to local Git repo directory
 setwd("C:/Users/theod/Documents/Git/DataScienceSpecialization/03_Getting_and_Cleaning_Data/GettingAndCleaningDataCourseProject")
