@@ -24,12 +24,12 @@ The zip file linked above contains descriptive info files that explain the conte
 
 ### traintest.txt
 This file contains data from 
--./train/subject_train.txt
--./train/X_train.txt
--./train/y_train.txt
--./test/subject_test.txt
--./test/X_test.txt
--./test/y_test.txt
+-./train/subject_train.txt  
+-./train/X_train.txt  
+-./train/y_train.txt  
+-./test/subject_test.txt  
+-./test/X_test.txt  
+-./test/y_test.txt  
 
 After reducing the the number of measure columns in accordance with the assignment instructions, the file contains the following columns:
 
