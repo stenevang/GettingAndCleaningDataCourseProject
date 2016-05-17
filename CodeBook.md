@@ -16,10 +16,10 @@ All of these files were produced from files available in this zip file, by follo
 https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
 The zip file linked above contains descriptive info files that explain the content of the data files:
-activity_labels.txt
-features.txt
-features_info.txt
-README.txt
+- activity_labels.txt
+- features.txt
+- features_info.txt
+- README.txt
 
 
 ### traintest.txt
